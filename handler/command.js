@@ -1,7 +1,6 @@
 const { readdirSync } = require("fs");
-
+var mdlCnt = 0
 const ascii = require("ascii-table");
-
 let table = new ascii("Commands");
 table.setHeading("Catagory", "Command", "Load status");
 
@@ -20,10 +19,12 @@ module.exports = (client) => {
                 continue;
             }
     
+            mdlCnt++
             if (pull.aliases && Array.isArray(pull.aliases)) pull.aliases.forEach(alias => client.aliases.set(alias, pull.name));
         }
     });
 
 
     console.log(table.toString());
+    console.log(`LOADED A TOTAL OF ${mdlCnt} MODULES`)
 }
