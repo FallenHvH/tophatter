@@ -1,5 +1,5 @@
 # TopHatter README
-This is for my bot TopHatter
+This is for my bot TopHatter, runs on NodeJS
 
 # Setup
 Just add in the bot tokens, you only need one.<br>
