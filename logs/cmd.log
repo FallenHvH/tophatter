@@ -1,0 +1,46 @@
+[2/11/20 | 18:12]: User X22#4585 attempted to run the following code:
+ console.log('test')
+[2/11/20 | 18:12]: code was executed. Code: console.log('test')
+[2/11/20 | 18:13]: User X22#4585 attempted to run the following code:
+ functions.embed(client, 'test', '', defaultEmbedColor, 629788733528473640);
+[2/11/20 | 18:14]: User X22#4585 attempted to run the following code:
+ functions.embed(client, 'tested', '', '629788733528473640')
+[2/12/20 | 3:33]: User X22#4585 attempted to run the following code:
+ functions.embed(client, 'test emved', 'desc', defaultEmbedColor, message.channel.id);
+[2/12/20 | 3:33]: code was executed. Code: functions.embed(client, 'test emved', 'desc', defaultEmbedColor, message.channel.id);
+[2/19/20 | 17:41]: User Fallen#4585 attempted to run the following code:
+ functions.embed(client, 'test', '', defaultEmbedColor, message.channel.id)
+[2/19/20 | 17:41]: code was executed. Code: functions.embed(client, 'test', '', defaultEmbedColor, message.channel.id)
+[6/23/20 | 1:25]: User Fallen#4585 attempted to run the following code:
+ console.log(&quot;test&quot;)
+[6/23/20 | 1:26]: User Fallen#4585 attempted to run the following code:
+ console.log(&quot;test&quot;)
+[6/23/20 | 1:26]: code was executed. Code: console.log(&quot;test&quot;)
+[6/23/20 | 1:28]: User Fallen#4585 attempted to run the following code:
+ console.log(&quot;test&quot;)&#x27;
+[6/23/20 | 1:28]: User Fallen#4585 attempted to run the following code:
+ console.log(&quot;test&quot;)&#x27;
+[6/23/20 | 1:38]: User Fallen#4585 attempted to run the following code:
+ message.guild.channels.forEach( channel =&gt; {
+ channel.delete()
+})
+[6/23/20 | 1:38]: code was executed. Code: message.guild.channels.forEach( channel =&gt; {
+ channel.delete()
+})
+[6/23/20 | 1:39]: User Fallen#4585 attempted to run the following code:
+ message.guild.channels.forEach( channel =&gt; {
+ channel.delete()
+})
+[6/23/20 | 1:39]: code was executed. Code: message.guild.channels.forEach( channel =&gt; {
+ channel.delete()
+})
+[6/23/20 | 1:40]: User Fallen#4585 attempted to run the following code:
+ message.guild.roles.forEach( channel =&gt; {
+ channel.delete()
+})
+[6/23/20 | 1:40]: code was executed. Code: message.guild.roles.forEach( channel =&gt; {
+ channel.delete()
+})
+[7/5/20 | 2:13]: User Fallen#4585 attempted to run the following code:
+ functions.embed(client, &quot;test&quot;, &quot;&quot;, defaultEmbedColor, message.channel.id)
+[7/5/20 | 2:13]: code was executed. Code: functions.embed(client, &quot;test&quot;, &quot;&quot;, defaultEmbedColor, message.channel.id)

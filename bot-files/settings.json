@@ -1,0 +1,49 @@
+{
+  "botName":                  "TopHatter",
+  "botOwnerID":               "292773664750043138",
+
+  "loginKey":                 "NTkyNDMxOTU2MzM2MDUwMTg2.XwF51w.qWxYDCkBWgehJl6dyI7wodx0O1s",
+  "devLoginKey":              "NjgwODUzMDAxNDU1NjY1MjA4.XwF5uA.dzqAHIi81Ex-kdZNwVTBPuRwHQ8",
+  
+  "tracerouteApiKey":         "d23eeff97cb58390540101b5f2fe8f871749e811",
+
+  "backupOnStart":            false,
+
+  "developerMode":            true,
+
+  "logMessagesToConsole":     false,
+  "deleteCommandMsg":         true,
+  "logCommandMessages":       true,
+  "logMessages":              true,
+  "deletingEmbedTimeout":     5,
+  "reactionWaitTime":         120,
+  "activityChangeTime":       10,
+
+  "defPrefix":                ".",
+  "defSwearingDetection":     0,
+  "defWarnForSwear":          0,
+  "defMaxWarnsUntilKick":     0,
+  "defAdminProtection":       1,
+  "defAdminMusic":            0,
+  "clearNumber":              1000,
+  "delayTimeout":             70,
+
+  "defSpamCooldown":          750,
+
+  "declineEmoji":             "❌",
+  "acceptEmoji":              "✅",
+
+  "sqlHost":                  "204.48.18.131",
+  "sqlUser":                  "client",
+  "sqlPass":                  "Gm2@26T5j2AL",
+  "sqlDatabase":              "discord_bot",
+
+  "embed":                    "#065280",
+  "embedError":               "#FF0008",
+
+  "ignoreDMs":                false,
+  "enableSwearingCensoring":  true,
+  "enableAutoMod":            true,
+
+  "randomNum":                999999999
+}

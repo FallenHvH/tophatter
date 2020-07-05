@@ -1,0 +1,11 @@
+[2/23/20 | 4:47]: Loop function error: TypeError: Cannot read property 'loop' of undefined
+    at Object.exports.loop (c:\Users\Steve\Desktop\vortex test branch\modules\[Music] functions.js:168:37)
+    at Query.<anonymous> (c:\Users\Steve\Desktop\vortex test branch\modules\[Music] Loop.js:21:17)
+    at Query.<anonymous> (c:\Users\Steve\Desktop\vortex test branch\node_modules\mysql\lib\Connection.js:526:10)
+    at Query._callback (c:\Users\Steve\Desktop\vortex test branch\node_modules\mysql\lib\Connection.js:488:16)
+    at Query.Sequence.end (c:\Users\Steve\Desktop\vortex test branch\node_modules\mysql\lib\protocol\sequences\Sequence.js:83:24)
+    at Query._handleFinalResultPacket (c:\Users\Steve\Desktop\vortex test branch\node_modules\mysql\lib\protocol\sequences\Query.js:149:8)
+    at Query.EofPacket (c:\Users\Steve\Desktop\vortex test branch\node_modules\mysql\lib\protocol\sequences\Query.js:133:8)
+    at Protocol._parsePacket (c:\Users\Steve\Desktop\vortex test branch\node_modules\mysql\lib\protocol\Protocol.js:291:23)
+    at Parser._parsePacket (c:\Users\Steve\Desktop\vortex test branch\node_modules\mysql\lib\protocol\Parser.js:433:10)
+    at Parser.write (c:\Users\Steve\Desktop\vortex test branch\node_modules\mysql\lib\protocol\Parser.js:43:10)

@@ -1,0 +1,10 @@
+Added:
+[+] Nmap command
+[+] Traceroute command
+[+] Geolocate command
+
+Fixed:
+[x] Random crashes
+
+Updated:
+[x] MySQL column length issues
