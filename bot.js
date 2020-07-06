@@ -406,7 +406,7 @@ client.on('message', async message => {
 
   if (!message.guild) return;
   if (!message.content.toString().length > 0) {
-    console.log(`[${functions.getTime()}]: (${message.guild.name}) <${message.guild.name}> Not a message: Ceasing run function.`);
+    if (settings.logMessagesToConsole) console.log(`[${functions.getTime()}]: (${message.guild.name}) <${message.guild.name}> Not a message: Ceasing run function.`);
     notMsg = true;
   } else {
     notMsg = false;
