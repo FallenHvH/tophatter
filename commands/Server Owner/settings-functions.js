@@ -160,7 +160,7 @@ exports.realTimeLoggingSettings = (conn, client, message, defaultEmbedColor, def
                 if (err) return functions.errorLog(err, 'Setting realtime logging channel')
       
                 msg.delete();
-                functions.embed(client, 'Database updated', `Database was updated to include ${msg.mentions.channels.first()} as realtime logging channel`, defaultEmbedColor, msg.channel.id)
+                functions.embed(client, 'Database updated', `Database was updated to include ${msg.mentions.channels.first()} as realtime logging channel`, defaultEmbedColor, message.channel.id)
                 collector.stop()
               })
             } else {
