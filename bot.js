@@ -329,7 +329,7 @@ client.on('ready', async () => {
 
   activity()
 
-  console.log(`Started ${settings.botName} by X22`);
+  console.log(`Started ${settings.botName} by Fallen#4585`);
   console.log(`Ignoring DMs: ${settings.ignoreDMs}`);
   console.log(`Swearing censoring: ${settings.enableSwearingCensoring}`);
   console.log(`Loaded ${extras.permissionMissingMsg.length} permissing missing messages`);
@@ -383,9 +383,11 @@ client.on('ready', async () => {
       console.log(`Failed to call tickets: ${err.stack}`)
     } else {
       console.log(`${result.length} support tickets\n`)
+      console.log(`Bot loading finished. ${client.user.tag} is now 🟢ONLINE\n`)
     }
   })
 
+  // print success
 });
 
 // actual code.. its a wonder aint it?
