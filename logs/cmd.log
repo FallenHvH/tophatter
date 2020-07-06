@@ -44,3 +44,8 @@
 [7/5/20 | 2:13]: User Fallen#4585 attempted to run the following code:
  functions.embed(client, &quot;test&quot;, &quot;&quot;, defaultEmbedColor, message.channel.id)
 [7/5/20 | 2:13]: code was executed. Code: functions.embed(client, &quot;test&quot;, &quot;&quot;, defaultEmbedColor, message.channel.id)
+[7/5/20 | 20:41]: User Fallen#4585 attempted to run the following code:
+ functions.permissionsmissing(client, defaultembederrorcolor, message.channel.id)
+[7/5/20 | 20:41]: User Fallen#4585 attempted to run the following code:
+ functions.permissionmissing(client, defaultembederrorcolor, message.channel.id)
+[7/5/20 | 20:41]: code was executed. Code: functions.permissionmissing(client, defaultembederrorcolor, message.channel.id)

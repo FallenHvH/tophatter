@@ -20,7 +20,8 @@ function getTime() {
 }
 
 // regular embeds
-exports.embed = (client, title, text, color, channelid) => {
+exports.embed = (client, title, text, color, message) => {
+  if (message.channel.id) {channelid = message.channel.id} else {channelid = message}
   let embed = new RichEmbed()
     .setTitle(title)
     .setDescription(text)
@@ -35,7 +36,8 @@ exports.embed = (client, title, text, color, channelid) => {
 }
 
 // disappearing embed
-exports.deletingEmbed = (client, title, text, color, channelid) => {
+exports.deletingEmbed = (client, title, text, color, message) => {
+  if (message.channel.id) {channelid = message.channel.id} else {channelid = message}
   let embed = new RichEmbed()
     .setTitle(title)
     .setDescription(text)

@@ -19,7 +19,6 @@ exports.setting = async (client, r, msg, message, setting, conn, sql, defaultEmb
     await msg.clearReactions()
 
     await msg.react(settings.acceptEmoji)
-
     await msg.react(settings.declineEmoji)
 
     const filter = (r, u) => [settings.acceptEmoji, settings.declineEmoji].includes(r.emoji.name) && u.id === message.author.id
@@ -33,11 +32,11 @@ exports.setting = async (client, r, msg, message, setting, conn, sql, defaultEmb
           if (err) {
             functions.embed(client, 'Failure', `Failed to update value: \`\`\`${err.message}\`\`\``, defaultEmbedErrorColor, message.channel.id)
           } else {
-            msg.edit({embed: {
-              title: `Settings - ${setting}`,
-              color: defaultEmbedColor,
-              description: 'Updated value to enabled.'
-            }})
+            let embed = new RichEmbed()
+              .setTitle(`Settings - ${setting}`)
+              .setDescription("Updated value to enabled")
+              .setColor(defaultEmbedColor)
+            msg.edit(embed)
             .then(msg => {
               setTimeout(() => {
                 msg.delete()
@@ -52,11 +51,11 @@ exports.setting = async (client, r, msg, message, setting, conn, sql, defaultEmb
           if (err) {
             functions.embed(client, 'Failure', `Failed to update value: \`\`\`${err.message}\`\`\``, defaultEmbedErrorColor, message.channel.id)
           } else {
-            msg.edit({embed: {
-              title: `Settings - ${setting}`,
-              color: defaultEmbedColor,
-              description: 'Updated value to disabled.'
-            }})
+            let embed = new RichEmbed()
+              .setTitle(`Settings - ${setting}`)
+              .setDescription("Updated value to disabled")
+              .setColor(defaultEmbedColor)
+            msg.edit(embed)
             .then(() => {
               setTimeout(() => {
                 msg.delete()

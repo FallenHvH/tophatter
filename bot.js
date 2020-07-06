@@ -150,7 +150,6 @@ async function scanMessageContent(client, conn, message, authorizedAdmin) {
               }, 5 * 1000)
             })
 
-            console.log(warnForSwearing)
             if (warnForSwearing == 1) {
               functions.warnUser(conn, client, defaultEmbedErrorColor, defaultEmbedColor, true, message, 'Swearing');
             }
@@ -402,7 +401,7 @@ client.on('message', async message => {
 
   if (!message.guild) return;
   if (!message.content.toString().length > 0) {
-    console.log(`[${functions.getTime()}]: Not a message: Ceasing run function.`);
+    console.log(`[${functions.getTime()}]: (${message.guild.name}) <${message.guild.name}> Not a message: Ceasing run function.`);
     notMsg = true;
   } else {
     notMsg = false;
@@ -424,27 +423,31 @@ client.on('message', async message => {
         }
       }
   
-      if (settings.logMessagesToConsole) console.log(`[${functions.getTime()}]: ${functions.getTag(message)} : ${message.author.id} in ${message.guild.name} : ${message.guild.id} => ${message.content}`);
+      conn.query(`SELECT enableMessageLogging FROM bot_servers WHERE serverid = "${message.guild.id}"`, (err, result) => {
+        if (result[0].enableMessageLogging == 1)
+        {
+          if (settings.logMessagesToConsole) console.log(`[${functions.getTime()}]: ${functions.getTag(message)} : ${message.author.id} in ${message.guild.name} : ${message.guild.id} => ${message.content}`);
   
-  
-      if (settings.logMessages) {
-        fs.appendFile('./logs/messages.log', `[${functions.getTime()}]: ${message.author.id} (${functions.getTag(message)}) in ${message.guild.id} (${message.guild.name}): ${message.content}\n`, err => {
-          if (err) console.error(`Error writing to messages.log: ${err}`)
-        })
-  
-        conn.query(`INSERT INTO logs (id, time, log_type, serverid, data) VALUES ('${Math.floor(Math.random() * settings.randomNum)}', '${functions.getTime()}', 'Message ', '${message.guild.id}', '${functions.getTag(message)}: ${message.content.toString()}')`, async (err) => {
-          if (err) {          
-            if (err.toString().includes('ER_TRUNCATED_WRONG_VALUE_FOR_FIELD')) return;
-            fs.appendFile('./logs/errors.log', `[${functions.getTime()}]: Failed to write to SQL messagelogs: ${err}\n`, async err => {
-              if (err) {
-                console.log('Failed to write to errors.log');
-              } else {
-                reconnectSQL();
+          if (settings.logMessages) {
+            fs.appendFile('./logs/messages.log', `[${functions.getTime()}]: ${message.author.id} (${functions.getTag(message)}) in ${message.guild.id} (${message.guild.name}): ${message.content}\n`, err => {
+              if (err) console.error(`Error writing to messages.log: ${err}`)
+            })
+      
+            conn.query(`INSERT INTO logs (id, time, log_type, serverid, data) VALUES ('${Math.floor(Math.random() * settings.randomNum)}', '${functions.getTime()}', 'Message ', '${message.guild.id}', '${functions.getTag(message)}: ${message.content.toString()}')`, async (err) => {
+              if (err) {          
+                if (err.toString().includes('ER_TRUNCATED_WRONG_VALUE_FOR_FIELD')) return;
+                fs.appendFile('./logs/errors.log', `[${functions.getTime()}]: Failed to write to SQL messagelogs: ${err}\n`, async err => {
+                  if (err) {
+                    console.log('Failed to write to errors.log');
+                  } else {
+                    reconnectSQL();
+                  }
+                })
               }
             })
           }
-        })
-      }
+        }
+      })
     }
     
 
@@ -501,29 +504,32 @@ client.on('message', async message => {
         delete args;
 
         // check for args
-        const args = message.content.slice(1).trim().split(/ +/g);
-        const command = args.shift().toLowerCase();
+        const args = message.content.toString().toLowerCase().split(" ");
+        const command = args.shift().slice(1);
         
         // scan message   
         await scanMessageContent(client, conn, message, authorizedAdmin);
-
         if (prefix != message.content.substring(0,1) || notMsg) return;
 
-        if (message.content.toString().toLowerCase().startsWith(prefix + 'reload')) {
-          if (true) {
-            if (settings.botOwnerID === message.author.id) {
-              loadModules()
-              return functions.embed( client, "Reloaded modules", "", defaultEmbedColor, message.channel.id )
-            } else {
-              return functions.actionProhibited(client, message, defaultEmbedErrorColor, 'Module Reload (Unauthorized)')
-            }
+        if (command == "reload") {
+          if (settings.botOwnerID == message.author.id) {
+            loadModules()
+            return functions.embed( client, "Reloaded modules", "", defaultEmbedColor, message.channel.id )
           } else {
-            return functions.actionProhibited(client, message, defaultEmbedErrorColor, 'Module Reload (Disabled)')
+            return functions.actionProhibited(client, message, defaultEmbedErrorColor, 'Module Reload (Unauthorized)')
+          }
+        } 
+        else if (command == "reloadcfg")
+        {
+          if (settings.botOwnerID == message.author.id) {
+            const settings = require("./bot-files/settings.json")
+            return functions.embed( client, "Reloaded configuration", "", defaultEmbedColor, message.channel.id )
+          } else {
+            return functions.actionProhibited(client, message, defaultEmbedErrorColor, 'Module Reload (Unauthorized)')
           }
         }
 
         // use external modules
-
         let cmd = client.commands.get(command);
         if (!cmd) cmd = client.commands.get(client.aliases.get(command));
 

@@ -20,8 +20,9 @@ module.exports = {
         .addField( "Option 2", "Warn for swearing" )
         .addField( "Option 3", "Admin protection" )
         .addField( "Option 4", "Admin only music" )
-        .addField( "Option 5", "AutoMod" )
-        .addField( "Option 6", "Real time logging" )
+        .addField( "Option 5", "Message logging" )
+        .addField( "Option 6", "AutoMod" )
+        .addField( "Option 7", "Real time logging" )
         .setFooter( functions.randomFooter(), client.user.avatarURL )
         .setTimestamp()
 
@@ -35,6 +36,7 @@ module.exports = {
         await msg.react(extras.numberCodes[4])
         await msg.react(extras.numberCodes[5])
         await msg.react(extras.numberCodes[6])
+        await msg.react(extras.numberCodes[7])
 
         const filter = (r, u) => [settings.declineEmoji, extras.numberCodes[1], extras.numberCodes[2], extras.numberCodes[3], extras.numberCodes[4], extras.numberCodes[5], extras.numberCodes[6]].includes(r.emoji.name) && u.id === message.author.id
         const reaction = msg.createReactionCollector(filter, {time: settings.reactionWaitTime * 1000})
@@ -55,10 +57,13 @@ module.exports = {
           } else if (r.emoji.name == extras.numberCodes[4]) {           
             s.setting(client, r, msg, message, 'Admin music commands', conn, 'adminMusic', defaultEmbedColor, defaultEmbedErrorColor)
             reaction.stop()
-          } else if (r.emoji.name == extras.numberCodes[5]) {           
-            s.autoModSettings(client, conn, message, defaultEmbedColor, defaultEmbedErrorColor);
+          } else if (r.emoji.name == extras.numberCodes[5]) {
+            s.setting(client, r, msg, message, 'Message logging', conn, 'enableMessageLogging', defaultEmbedColor, defaultEmbedErrorColor)
             reaction.stop()
           } else if (r.emoji.name == extras.numberCodes[6]) {           
+            s.autoModSettings(client, conn, message, defaultEmbedColor, defaultEmbedErrorColor);
+            reaction.stop()
+          } else if (r.emoji.name == extras.numberCodes[7]) {           
             s.realTimeLoggingSettings(conn, client, message, defaultEmbedColor, defaultEmbedErrorColor);
             reaction.stop()
           } 
