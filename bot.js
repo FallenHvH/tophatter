@@ -386,7 +386,12 @@ client.on('ready', async () => {
     }
   })
 
-  // print success
+  client.guilds.forEach(guild => {
+    if (functions.setupSQL(conn,guild.id,guild.name))
+    {
+      console.log(`[${functions.getTime()}]: Setup server ${guild.name} (Server not found in database)`)
+    }
+  })
 });
 
 // actual code.. its a wonder aint it?
@@ -410,9 +415,7 @@ client.on('message', async message => {
   try {
     if (!notMsg) {
       let data = fs.readFileSync('./bot-files/extras.json')
-  
       let blacklistedIDs = [];
-  
       let parsed = JSON.parse(data);
   
       blacklistedIDs = parsed.blacklistedIDs
@@ -424,6 +427,7 @@ client.on('message', async message => {
       }
   
       conn.query(`SELECT enableMessageLogging FROM bot_servers WHERE serverid = "${message.guild.id}"`, (err, result) => {
+        if (!result[0]) return functions.setupSQL(conn, message.guild.id, message.guild.name) // anti corruption and shit
         if (result[0].enableMessageLogging == 1)
         {
           if (settings.logMessagesToConsole) console.log(`[${functions.getTime()}]: ${functions.getTag(message)} : ${message.author.id} in ${message.guild.name} : ${message.guild.id} => ${message.content}`);

@@ -95,13 +95,15 @@ exports.usage = (client, syntax, color, channelid) => {
 
 // setup sql table
 exports.setupSQL = (conn, serverid, servername) => {
-  console.log('Attempting to setup server ' + serverid + ':' + servername)
+  // console.log('Attempting to setup server ' + serverid + ':' + servername)
   conn.query(`INSERT INTO bot_servers (serverID) VALUES ('${serverid}');`, (err,result) => {
     if (err) {
-      console.log('Failed to setup table for server ' + serverid + ':' + servername)
-      console.log(err.stack);
+      // console.log('Failed to setup table for server ' + serverid + ':' + servername)
+      // console.log(err);
+      return false
     } else {
-      console.log('Setup data for table for server ' + serverid + ':' + servername)
+      // console.log('Setup data for table for server ' + serverid + ':' + servername)
+      return true
     }
   })
 }
