@@ -10,7 +10,7 @@ This is for my bot TopHatter, runs on NodeJS
 2. Insert bot token into the token string, devtoken is if you want a dev branch (toggled by `"devMode": true`)<br>
 3. Open CMD and run `npm install`<br>
 <br>
-###### NOTE: SQL database is a work in progress, will make a command to create all the tables and everything.
+# NOTE: SQL database is a work in progress, will make a command to create all the tables and everything.
 
 # Contact
 Discord: Fallen#4585<br>
