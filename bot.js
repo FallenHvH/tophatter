@@ -406,7 +406,10 @@ client.on('message', async message => {
 
   if (!message.guild) return;
   if (!message.content.toString().length > 0) {
-    if (settings.logMessagesToConsole) console.log(`[${functions.getTime()}]: (${message.guild.name}) <${message.guild.name}> Not a message: Ceasing run function.`);
+    conn.query(`SELECT enableMessageLogging FROM bot_servers WHERE serverid = "${message.guild.id}"`, (err,res)=>{
+      if (err) return functions.errorLog(err,"Calling enableMessageLogging (main func)")
+      if (settings.logMessagesToConsole&&res[0].enableMessageLogging==1) console.log(`[${functions.getTime()}]: (${message.guild.name}) <${message.guild.name}> Not a message: Ceasing run function.`);
+    })
     notMsg = true;
   } else {
     notMsg = false;
