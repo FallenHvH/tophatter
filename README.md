@@ -13,6 +13,7 @@ This is for my bot TopHatter, runs on NodeJS
 5. Profit
 
 #### NOTE: SQL database is a work in progress, will make a command to create all the tables and everything.
+#### NOTE2: Currently working on a rework of most of the bot, lots of optimizations and such
 
 # Contact
 Discord: Fallen#4585<br>
